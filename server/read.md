@@ -12,3 +12,19 @@ require('dotenv').config();
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=123456
+### mysql.createPool 和 mysql.createConnection  的区别
+mysql.createPool 和 mysql.createConnection 都是 Node.js 中用于创建 MySQL 数据库连接的函数。它们之间的区别在于：
+
+mysql.createConnection 创建一个单独的数据库连接，使用完毕后需要手动关闭连接，而 mysql.createPool 创建的是一个连接池，可以通过调用 pool.getConnection() 来获取连接，在使用完毕后会自动归还到连接池中。
+
+连接池可以提高应用程序的性能，因为可以重复使用已经建立的连接而不必每次都创建一个新连接。此外，连接池还可以在并发请求时限制最大连接数，以防止过多的连接请求导致数据库连接过载。
+连接池还提供了一些额外的功能，例如可以设置连接超时时间、空闲连接的最大数量和最小数量等。
+综上所述，如果应用程序需要频繁地连接数据库并且需要高性能，那么使用 mysql.createPool 是更好的选择。如果只需要连接数据库做一些简单的操作，那么可以使用 mysql.createConnection。
+
+### `select * from user u where u.phone = ${params.phone}`  是什么意思
+
+这是一条 SQL 查询语句，意思是从表名为 user 的数据表中查询所有符合条件 u.phone = ${params.phone} 的记录。
+
+${params.phone} 可能是一个变量或参数，它的值将在查询执行时动态地插入到 SQL 查询语句中，以实现动态查询的效果。这种方式通常被称为参数化查询，可以防止 SQL 注入等安全问题。
+
+在这个查询中，u 是一个别名，用于表示表名为 user 的数据表。使用别名可以简化 SQL 查询语句的编写，并且可以使 SQL 查询语句更易于阅读和理解。 u.phone 表示 user 表中的 phone 字段。查询中的 * 通常表示查询所有字段，也可以将其替换为具体字段名，以返回需要的数据。

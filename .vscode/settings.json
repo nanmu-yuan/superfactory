@@ -1,0 +1,6 @@
+{
+    "rest-client.rememberCookiesForSubsequentRequests": false,
+    "rest-client.excludeHostsForProxy": [
+    
+    ]
+}

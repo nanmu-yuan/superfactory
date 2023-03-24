@@ -1,0 +1,15 @@
+###
+@requestHpst = http://127.0.0.1:8888/api
+@json=Content-Type: application/json
+###
+POST {{requestHpst}}/login
+
+{{json}}
+
+{
+    "username":"123123",
+    "password":"12312312"
+}
+
+###
+

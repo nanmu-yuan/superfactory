@@ -1,7 +1,7 @@
 import express from 'express';
 import path from "path";
 import bodyParser from 'body-parser';
-
+import cors from 'cors'
 // 启动项目 安装插件
 export default function(server){
 /**
@@ -10,6 +10,10 @@ export default function(server){
  */
     server.use(express.urlencoded({extended:true}));
     server.use(express.json());
+
+
+// 用cors 插件开启跨域设置
+    server.use(cors());
 /**
  * bodyParse 请求的参数解析到req.body中
  * 
